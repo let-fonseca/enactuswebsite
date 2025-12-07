@@ -201,3 +201,35 @@
     }
   });
 })();
+
+// Layout inteligente para áreas do time
+(function() {
+  function adjustTeamLayouts() {
+    const areas = document.querySelectorAll('.team-area');
+    
+    areas.forEach(area => {
+      const count = area.querySelectorAll('.card').length;
+      
+      // Remove classes existentes
+      area.classList.remove('layout-3', 'layout-4');
+      
+      // Lógica de divisão inteligente para evitar 1 membro sozinho
+      if (count === 1 || count === 2 || count === 3) {
+        // 1-3: usa 3 por linha (padrão)
+      } else if (count === 4 || count === 6 || count === 7 || count === 8) {
+        // 4, 6, 7, 8: usa 4 por linha
+        area.classList.add('layout-4');
+      } else if (count === 5 || count === 9) {
+        // 5, 9: usa 3 por linha (3+2 ou 3+3+3)
+      } else if (count % 4 === 0 || count % 4 === 2 || count % 4 === 3) {
+        // Divisível por 4, ou resto 2/3: usa 4 por linha
+        area.classList.add('layout-4');
+      }
+      // Resto 1: usa 3 por linha para evitar 1 sozinho
+    });
+  }
+
+  // Executa ao carregar e ao redimensionar
+  window.addEventListener('load', adjustTeamLayouts);
+  window.addEventListener('resize', adjustTeamLayouts);
+})();

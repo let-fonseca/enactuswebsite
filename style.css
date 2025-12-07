@@ -554,3 +554,58 @@ body {
 .navbar.scrolled .nav-link.active::after {
   background-color: #014e9a;
 }
+
+/* =========================================
+   10. LAYOUT RESPONSIVO PARA A ABA DO TIME
+   ========================================= */
+.team-area {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  justify-content: center;
+  margin-bottom: 3rem;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.team-area .card {
+  width: 280px;
+  margin: 0;
+  flex-shrink: 0;
+}
+
+.team-area .card-img-top {
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  width: 100%;
+}
+
+/* Mobile: 2 cards por linha */
+@media (max-width: 767px) {
+  .team-area .card {
+    width: calc(50% - 0.75rem);
+    max-width: 280px;
+  }
+}
+
+/* Tablets: 3 cards por linha */
+@media (min-width: 768px) and (max-width: 991px) {
+  .team-area .card {
+    width: calc(33.333% - 1rem);
+    max-width: 280px;
+  }
+}
+
+/* Desktop: layouts por quantidade */
+@media (min-width: 992px) {
+  /* 3 por linha (padrão) */
+  .team-area {
+    max-width: 910px;
+  }
+  
+  /* 4 por linha */
+  .team-area.layout-4 {
+    max-width: 1240px;
+  }
+}
