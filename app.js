@@ -52,7 +52,7 @@
     !nextBtn ||
     !content
   ) {
-    console.error("Search elements not found");
+    console.error("Elementos de search não encontrados.");
     return;
   }
 
